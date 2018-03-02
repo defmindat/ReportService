@@ -20,7 +20,6 @@ namespace ReportService.Controllers
             var report = _reportGenerator.Generate(year, month);
             if (report == null)
             {
-                Response.StatusCode = 400;
                 return Content("Неверные входные данные");
             }
 
