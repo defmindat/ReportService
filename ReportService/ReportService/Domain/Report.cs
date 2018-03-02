@@ -10,7 +10,7 @@ namespace ReportService.Domain
         public string S { get; set; }
         public void Save()
         {
-            System.IO.File.WriteAllText("D:\\report.txt", S);
+            System.IO.File.WriteAllText("C:\\Users\\User\\report.txt", S);
         }
     }
 }
