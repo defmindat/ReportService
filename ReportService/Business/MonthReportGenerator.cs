@@ -22,7 +22,7 @@ namespace Business
             var report = new Report {S = MonthName.GetName(year, month) + " " + year};
 
             var employees = DAEmployee.GetEmployees();
-            //var departments = DADepartment.GetDepartments();
+            var departments = DADepartment.GetDepartments();
 
             Parallel.ForEach(employees, (emp) =>
             {
@@ -30,16 +30,19 @@ namespace Business
                 emp.Salary = emp.Salary();
             });
 
-
-            var groupByDep = employees.GroupBy(x => x.Department);
-
-            foreach (var grouping in groupByDep)
+            foreach (var dep in departments)
             {
-                AddLine(grouping.Key);
+                AddLine(dep.Name);
 
-                foreach (var emp in grouping) AddEmployeeLine(emp);
+                var groupingByDepartmentName = employees.GroupBy(e => e.Department).Where(g => g.Key == dep.Name);
+                var employeesInDep = groupingByDepartmentName.SelectMany(e => e);
 
-                AddEmployeeLine(new Employee {Name = "Всего по отделу ", Salary = grouping.Sum(x => x.Salary)});
+                foreach (var empInDep in employeesInDep)
+                {
+                    AddEmployeeLine(empInDep);
+                }
+
+                AddEmployeeLine(new Employee { Name = "Всего по отделу ", Salary = employeesInDep.Sum(x => x.Salary) });
             }
 
             AddLine(null);
