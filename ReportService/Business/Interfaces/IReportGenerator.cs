@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Business.Model;
+﻿using Business.Model;
 
 namespace Business.Interfaces
 {

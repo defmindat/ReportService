@@ -1,10 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace ReportService.Domain
 {
@@ -27,6 +24,8 @@ namespace ReportService.Domain
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
             var reader = new System.IO.StreamReader(httpResponse.GetResponseStream(), true);
             string responseText = reader.ReadToEnd();
+            httpResponse.Close();
+
             return (int)Decimal.Parse(responseText);
         }
 

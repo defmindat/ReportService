@@ -18,5 +18,4 @@
       <HintPath>MonthResolver\MonthNameResolver.dll</HintPath>
     </Reference>
   </ItemGroup>
-
 </Project>

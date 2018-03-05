@@ -1,5 +1,4 @@
 ﻿using Business.Interfaces;
-using Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ReportService.Controllers
@@ -23,7 +22,7 @@ namespace ReportService.Controllers
                 return Content("Неверные входные данные");
             }
 
-            var file = System.IO.File.ReadAllBytes(Config.ReportDirectory);
+            var file = System.IO.File.ReadAllBytes(report.Name);
             var response = File(file, "application/octet-stream", "report.txt");
             return response;
         }

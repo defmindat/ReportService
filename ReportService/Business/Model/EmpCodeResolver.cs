@@ -1,9 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace ReportService.Domain
@@ -12,18 +8,11 @@ namespace ReportService.Domain
     {
         public static async Task<string> GetCode(string inn)
         {
-            string res ="";
-            try
+            using (var client = new HttpClient())
             {
-                var client = new HttpClient();
-                res = await client.GetStringAsync("http://buh.local/api/inn/" + inn);
+                string result = await client.GetStringAsync("http://buh.local/api/inn/" + inn);
+                return result;
             }
-            catch (Exception exc)
-            {
-                //логирование
-            }
-            return res;
-            
         }
     }
 }
