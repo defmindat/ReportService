@@ -1,7 +1,7 @@
 ﻿using System;
 using Business.Model;
 
-namespace ReportService.Domain
+namespace Business.Domain
 {
     public class ReportFormatter
     {

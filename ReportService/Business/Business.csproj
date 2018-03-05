@@ -16,6 +16,8 @@
   <ItemGroup>
     <Reference Include="MonthNameResolver">
       <HintPath>MonthResolver\MonthNameResolver.dll</HintPath>
+      <Private>true</Private>
     </Reference>
   </ItemGroup>
+
 </Project>

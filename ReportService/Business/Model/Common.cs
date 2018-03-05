@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Net;
 
-namespace ReportService.Domain
+namespace Business.Domain
 {
     public static class EmployeeCommonMethods
     {

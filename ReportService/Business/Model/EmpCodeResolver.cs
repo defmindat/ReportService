@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace ReportService.Domain
+namespace Business.Domain
 {
     public class EmpCodeResolver
     {
@@ -10,7 +10,7 @@ namespace ReportService.Domain
         {
             using (var client = new HttpClient())
             {
-                string result = await client.GetStringAsync("http://buh.local/api/inn/" + inn);
+                string result = await client.GetStringAsync("http://buh.local/api/inn/" + inn).ConfigureAwait(false);
                 return result;
             }
         }

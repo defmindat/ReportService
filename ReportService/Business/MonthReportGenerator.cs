@@ -7,7 +7,7 @@ using Business.Model;
 using DataAccess;
 using Entities;
 using MonthNameResolver;
-using ReportService.Domain;
+using Business.Domain;
 
 namespace Business
 {
@@ -19,7 +19,10 @@ namespace Business
         public Report Generate(int year, int month)
         {
             if (year < 1900 || year > DateTime.UtcNow.Year || month < 1 || month > 12) return null;
-            var report = new Report(year, month) {S = MonthName.GetName(year, month) + " " + year};
+            var report = new Report(year, month)
+            {
+                S = month + "-" + year //MonthName.GetName(year, month)
+            };
 
             var employees = DAEmployee.GetEmployees();
             var departments = DADepartment.GetDepartments();
