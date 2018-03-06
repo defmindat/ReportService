@@ -53,6 +53,7 @@ namespace Business
 
             foreach (var act in actions) act.Item1(act.Item2, report);
             report.Save();
+            actions.Clear();
             return report;
         }
 
